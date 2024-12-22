@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<title>SpaceX Starship Lander Game (Unofficial)</title>
+	<style>
+		* {
+			margin: 0;
+			overflow: hidden;
+			/* stop ios selection magnification/highlighting/dragging: */
+			-webkit-touch-callout: none;
+			-webkit-user-callout: none;
+			-webkit-user-select: none;
+			-webkit-user-drag: none;
+			-webkit-user-modify: none;
+			-webkit-highlight: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+		nav {
+			position: relative; /* Make the nav position relative for absolute positioning */
+			transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition for hiding */
+			padding: 10px 0; /* Decrease padding to raise the nav bar content */
+		}
+
+		.hidden {
+			transform: translateY(-100%); /* Move the nav up out of view */
+			opacity: 0; /* Fade out effect */
+		}
+
+		.nav-links {
+			display: flex; /* Default to horizontal layout */
+			flex-direction: row; /* Align links horizontally */
+		}
+
+		@media (max-width: 768px) {
+			.nav-links {
+				display: none; /* Hide links by default on mobile */
+				flex-direction: column; /* Stack links vertically */
+				position: absolute; /* Position them absolutely */
+				top: 100%; /* Position below the navbar */
+				left: 0; /* Align to the left */
+				width: 100%; /* Full width */
+				background-color: white; /* Background color for the dropdown */
+				z-index: 5; /* Ensure it appears above other elements */
+			}
+
+			.nav-content.active .nav-links {
+				display: flex; /* Show links when the navbar is active */
+			}
+		}
+	</style>
+	<script type="module" src="./main.js"></script>
+</head>
+
+<body>
+	<nav id="navbar">
+		<div class="nav-content">
+			<h1 class="nav-name">Jackson Yuen</h1>
+			<div class="mobile-menu-btn">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<ul class="nav-links">
+				<li><a href="#home">Home</a></li>
+				<li><a href="#about">About</a></li>
+				<li><a href="#skills">Skills</a></li>
+				<li><a href="#projects">Projects</a></li>
+				<li><a href="#blog">Blog</a></li>
+				<li><a href="#contact">Contact</a></li>
+				<li><a href="your-resume.pdf" class="resume-btn" download>Download Resume</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<script>
+		const navbar = document.getElementById('navbar'); // Get the nav element
+		// You can implement a different way to toggle the navbar visibility if needed
+	</script>
+</body>
+
+</html>
