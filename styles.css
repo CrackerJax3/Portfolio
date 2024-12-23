@@ -1,6 +1,6 @@
 :root {
     --bg-primary: #1a1a1a;
-    --bg-secondary: #252525;
+    --bg-secondary: #1a1a1a;
     --text-primary: #ffffff;
     --text-secondary: #b3b3b3;
     --accent: #007bff;
@@ -24,7 +24,7 @@ nav {
     position: absolute;
     width: 100%;
     background: var(--bg-secondary);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    /* box-shadow: 0 2px 5px rgba(0,0,0,0.2); */
 }
 
 .nav-content {
@@ -76,7 +76,8 @@ section {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 200px));
+    /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
     gap: 2rem;
     padding: 2rem 0;
 }
