@@ -1,3 +1,12 @@
+:root {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #252525;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --accent: #007bff;
+    --border: #333333;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +14,8 @@
 }
 
 body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
 }
@@ -12,8 +23,8 @@ body {
 nav {
     position: fixed;
     width: 100%;
-    background: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: var(--bg-secondary);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .nav-content {
@@ -37,7 +48,11 @@ nav ul {
 
 nav a {
     text-decoration: none;
-    color: #333;
+    color: var(--text-primary);
+}
+
+nav a:hover {
+    color: var(--accent);
 }
 
 section {
@@ -63,11 +78,12 @@ section {
 }
 
 .project-card {
-    border: 1px solid #ddd;
+    border: 1px solid var(--border);
     border-radius: 8px;
     overflow: hidden;
     text-align: center;
     transition: transform 0.2s;
+    background: var(--bg-secondary);
 }
 
 .project-card:hover {
@@ -104,28 +120,34 @@ section {
 
 input, textarea {
     padding: 0.5rem;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border);
     border-radius: 4px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+input:focus, textarea:focus {
+    outline: 1px solid var(--accent);
 }
 
 button {
     padding: 0.5rem 1rem;
-    background: #333;
-    color: white;
+    background: var(--accent);
+    color: var(--text-primary);
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
 button:hover {
-    background: #444;
+    background: #0056b3;
 }
 
 footer {
     text-align: center;
     padding: 2rem;
-    background: #333;
-    color: white;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
 }
 
 @media (max-width: 768px) {
@@ -145,7 +167,7 @@ footer {
 .mobile-menu-btn span {
     width: 30px;
     height: 3px;
-    background: #333;
+    background: var(--text-primary);
     transition: 0.3s;
 }
 
@@ -161,13 +183,13 @@ footer {
 }
 
 .social-links a {
-    color: #333;
+    color: var(--text-secondary);
     font-size: 1.5rem;
     transition: color 0.3s;
 }
 
 .social-links a:hover {
-    color: #007bff;
+    color: var(--accent);
 }
 
 /* Skills Section */
@@ -179,9 +201,10 @@ footer {
 }
 
 .skill-category {
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     padding: 1.5rem;
     border-radius: 8px;
+    border: 1px solid var(--border);
 }
 
 .skill-items {
@@ -207,9 +230,10 @@ footer {
 }
 
 .blog-card {
-    border: 1px solid #ddd;
+    border: 1px solid var(--border);
     border-radius: 8px;
     overflow: hidden;
+    background: var(--bg-secondary);
 }
 
 .blog-card img {
@@ -225,7 +249,7 @@ footer {
 .read-more {
     display: inline-block;
     margin-top: 1rem;
-    color: #007bff;
+    color: var(--accent);
     text-decoration: none;
 }
 
@@ -241,7 +265,7 @@ footer {
         top: 100%;
         left: 0;
         width: 100%;
-        background: white;
+        background: var(--bg-secondary);
         padding: 1rem;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
