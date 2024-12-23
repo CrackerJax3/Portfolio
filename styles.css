@@ -21,7 +21,7 @@ body {
 }
 
 nav {
-    position: fixed;
+    position: absolute;
     width: 100%;
     background: var(--bg-secondary);
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
@@ -56,19 +56,23 @@ nav a:hover {
 }
 
 section {
-    padding: 5rem 2rem;
+    padding: 1.5rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .hero {
-    height: 100vh;
+    height: 10vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
-    text-align: center;
+    text-align: left;
+    padding: 4rem 0;
+    padding-top: 10vh;
 }
+
+
 
 .projects-grid {
     display: grid;
