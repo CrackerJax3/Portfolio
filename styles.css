@@ -41,7 +41,8 @@ nav {
 
 .nav-content {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: center;
     align-items: center;
     padding: 1rem 2rem;
     max-width: 1200px;
@@ -81,7 +82,7 @@ section {
     align-items: center;
     text-align: left;
     padding: 4rem 0;
-    padding-top: 10vh;
+    padding-top: 1rem 2rem;
 }
 
 
@@ -175,6 +176,15 @@ footer {
     }
 } 
 
+.nav-content {
+    display: flex;
+    /* justify-content: space-between; */
+    justify-content: right;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 /* Mobile Menu Styles */
 .mobile-menu-btn {
     display: none;
@@ -292,7 +302,8 @@ footer {
     .nav-links.active {
         display: flex;
         flex-direction: column;
-        text-align: center;
+        text-align: right;
+        padding-right: 2rem;
     }
 
     .social-links {
