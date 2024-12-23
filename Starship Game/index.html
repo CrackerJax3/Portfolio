@@ -21,49 +21,29 @@
 			user-select: none;
 		}
 		nav {
-			position: relative; /* Make the nav position relative for absolute positioning */
-			transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition for hiding */
-			padding: 10px 0; /* Decrease padding to raise the nav bar content */
 			background-color: #333; /* Example background color */
-		}
-
-		.hidden {
-			transform: translateY(-100%); /* Move the nav up out of view */
-			opacity: 0; /* Fade out effect */
-		}
-
-		.nav-links {
-			display: flex; /* Default to horizontal layout */
-			flex-direction: row; /* Align links horizontally */
-			list-style: none;
-			display: flex;
-		}
-
-		@media (max-width: 768px) {
-			.nav-links {
-				display: none; /* Hide links by default on mobile */
-				flex-direction: column; /* Stack links vertically */
-				position: absolute; /* Position them absolutely */
-				top: 100%; /* Position below the navbar */
-				left: 0; /* Align to the left */
-				width: 100%; /* Full width */
-				background-color: white; /* Background color for the dropdown */
-				z-index: 5; /* Ensure it appears above other elements */
-			}
-
-			.nav-content.active .nav-links {
-				display: flex; /* Show links when the navbar is active */
-			}
+			padding: 5px 10px; /* Reduce padding to decrease height */
 		}
 
 		.nav-content {
 			display: flex;
 			justify-content: space-between;
-			align-items: center;
+			align-items: center; /* Center items vertically */
+		}
+
+		.nav-name a {
+			color: white; /* Set the name color to white */
+			text-decoration: none; /* Remove underline */
+			font-size: 1.5em; /* Adjust this value to make the name smaller */
+		}
+
+		.nav-links {
+			list-style: none;
+			display: flex; /* Default to horizontal layout */
 		}
 
 		.nav-links li {
-			margin: 0 15px; /* Example spacing */
+			margin: 0 10px; /* Adjust spacing between links */
 		}
 
 		.nav-links a {
@@ -75,9 +55,15 @@
 			text-decoration: underline; /* Underline on hover */
 		}
 
-		.nav-name {
-			color: white; /* Set the name color to white */
+		.burger {
+			display: none; /* Hidden by default */
+			flex-direction: column;
+			cursor: pointer;
 		}
+
+		.line {
+			height: 3px;
+			width: 25px;
 	</style>
 	<script type="module" src="./main.js"></script>
 </head>
