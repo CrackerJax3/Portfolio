@@ -292,7 +292,7 @@ footer {
     .nav-links.active {
         display: flex;
         flex-direction: column;
-        text-align: right;
+        text-align: center;
     }
 
     .social-links {
