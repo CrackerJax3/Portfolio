@@ -174,17 +174,18 @@ footer {
     nav ul {
         display: none;
     }
+
+    .nav-content {
+        display: flex;
+        /* justify-content: space-between; */
+        justify-content: right;
+        align-items: center;
+        padding: 1rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 } 
 
-.nav-content {
-    display: flex;
-    /* justify-content: space-between; */
-    justify-content: right;
-    align-items: center;
-    padding: 1rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
 /* Mobile Menu Styles */
 .mobile-menu-btn {
     display: none;
