@@ -106,20 +106,31 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     // Create gallery items for each image
-    images.forEach(filename => {
-        const galleryItem = document.createElement('div');
-        galleryItem.className = 'gallery-item';
-        
-        const img = document.createElement('img');
-        img.src = `../public/Nosecone/${filename}`;
-        img.alt = 'Nosecone Sculpture';
-        
-        const caption = document.createElement('p');
-        caption.textContent = 'Nosecone Sculpture';
-        
-        galleryItem.appendChild(img);
-        galleryItem.appendChild(caption);
-        galleryContainer.appendChild(galleryItem);
+    const imagePromises = images.map(filename => {
+        return new Promise((resolve) => {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            
+            const img = document.createElement('img');
+            img.src = `../public/Nosecone/${filename}`;
+            img.alt = 'Nosecone Sculpture';
+            
+            const caption = document.createElement('p');
+            caption.textContent = 'Nosecone Sculpture';
+            
+            galleryItem.appendChild(img);
+            galleryItem.appendChild(caption);
+            galleryContainer.appendChild(galleryItem);
+
+            // Resolve the promise when the image is loaded
+            img.onload = () => resolve();
+            img.onerror = () => resolve(); // Resolve even if image fails to load
+        });
+    });
+
+    // Wait for all images to load before attaching click events
+    Promise.all(imagePromises).then(() => {
+        attachGalleryClickEvents();
     });
 
     // Lightbox functionality
@@ -210,12 +221,5 @@ document.addEventListener('DOMContentLoaded', function() {
             img.style.cursor = 'pointer';
             img.onclick = () => openLightbox(idx);
         });
-    }
-
-    // Call after images are loaded
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', attachGalleryClickEvents);
-    } else {
-        attachGalleryClickEvents();
     }
 }); 
