@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find D:DesktopPortfolio-simplerPortfolio-simpler -type f -name *.html -o -name *.css -o -name *.js -o -name *.json -o -name *.txt -o -name *.md)"
+    ]
+  }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<title>Starship Game</title>
+	<link rel="stylesheet" href="../styles.css"> <!-- Adjust the path as necessary -->
+	<style>
+		* {
+			margin: 0;
+			overflow: hidden;
+			/* stop ios selection magnification/highlighting/dragging: */
+			-webkit-touch-callout: none;
+			-webkit-user-callout: none;
+			-webkit-user-select: none;
+			-webkit-user-drag: none;
+			-webkit-user-modify: none;
+			-webkit-highlight: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+		nav {
+			background-color: #333; /* Example background color */
+			
+		}
+
+		.nav-content {
+			display: flex;
+			justify-content: space-between;
+			align-items: center; /* Center items vertically */
+		}
+
+		.nav-name a {
+			color: white; /* Set the name color to white */
+			text-decoration: none; /* Remove underline */
+			font-size: 1.5em; /* Adjust this value to make the name smaller */
+		}
+
+		.nav-links {
+			list-style: none;
+			display: flex; /* Default to horizontal layout */
+		}
+
+		.nav-links li {
+			margin: 0 10px; /* Adjust spacing between links */
+		}
+
+		.nav-links a {
+			color: white; /* Example text color */
+			text-decoration: none; /* Remove underline */
+		}
+
+		.nav-links a:hover {
+			text-decoration: underline; /* Underline on hover */
+		}
+
+		.burger {
+			display: none; /* Hidden by default */
+			flex-direction: column;
+			cursor: pointer;
+		}
+
+		.line {
+			height: 3px;
+			width: 25px;
+		}
+	</style>
+	<nav id="navbar"></nav>
+		<div class="nav-content">
+			<h1 class="nav-name">Jackson Yuen</h1>
+			<div class="mobile-menu-btn">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<ul class="nav-links">
+				<li><a href="../index.html#home">Home</a></li>
+				<li><a href="../index.html#about">About</a></li>
+				<li><a href="../index.html#skills">Skills</a></li>
+				<li><a href="../index.html#projects">Projects</a></li>
+				<li><a href="../index.html#blog">Blog</a></li>
+				<li><a href="../index.html#contact">Contact</a></li>
+				<li><a href="../your-resume.pdf" class="resume-btn" download>Download Resume</a></li>
+			</ul>
+		</div>
+	</nav>
+	<script type="module" src="./main.js"></script>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BF68Q3PCD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6BF68Q3PCD');
+</script>
+
+<body>
+	
+
+	<script>
+		const navbar = document.getElementById('navbar'); // Get the nav element
+		// You can implement a different way to toggle the navbar visibility if needed
+	</script>
+</body>
+
+</html>
