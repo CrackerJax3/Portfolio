@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
             galleryItem.className = 'gallery-item';
             
             const img = document.createElement('img');
-            img.src = `../public/Nosecone/${filename}`;
+            img.src = `./gallery/${filename}`;
             img.alt = 'Nosecone Sculpture';
             
             const caption = document.createElement('p');
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
         lightbox.className = 'lightbox-overlay';
         lightbox.innerHTML = `
             <div class="lightbox-content">
-                <img src="../public/Nosecone/${images[index]}" class="lightbox-img" alt="Nosecone Sculpture">
+                <img src="./gallery/${images[index]}" class="lightbox-img" alt="Nosecone Sculpture">
                 <button class="lightbox-close">&times;</button>
                 <button class="lightbox-arrow left">&#8592;</button>
                 <button class="lightbox-arrow right">&#8594;</button>
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (currentIndex === null) return;
         currentIndex = (currentIndex + direction + images.length) % images.length;
         const img = document.querySelector('.lightbox-img');
-        if (img) img.src = `../public/Nosecone/${images[currentIndex]}`;
+        if (img) img.src = `./gallery/${images[currentIndex]}`;
         updateLightboxArrows();
     }
 

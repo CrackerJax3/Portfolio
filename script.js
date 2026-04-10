@@ -77,4 +77,47 @@ async function updateProductImages() {
 }
 
 // Call the function when the page loads
-document.addEventListener('DOMContentLoaded', updateProductImages); 
+document.addEventListener('DOMContentLoaded', updateProductImages);
+
+// Auto-load thumbnails from project thumbnail folders.
+// Drop any file named "thumbnail.ext" into a project's thumbnail/ folder
+// and it will appear automatically. Supported: jpg, jpeg, png, webp, gif, mp4, webm
+const IMAGE_EXTS = ['jpg', 'JPG', 'jpeg', 'png', 'PNG', 'webp', 'gif'];
+const VIDEO_EXTS = ['mp4', 'webm'];
+
+async function findThumbnail(dir) {
+    const exts = [...IMAGE_EXTS, ...VIDEO_EXTS];
+    for (const ext of exts) {
+        const src = `${dir}/thumbnail.${ext}`;
+        try {
+            const res = await fetch(src, { method: 'HEAD' });
+            if (res.ok) return { src, isVideo: VIDEO_EXTS.includes(ext) };
+        } catch {}
+    }
+    return null;
+}
+
+async function loadProjectThumbnails() {
+    const cards = document.querySelectorAll('.project-card[data-thumbnail-dir]');
+    await Promise.all([...cards].map(async card => {
+        const dir = card.getAttribute('data-thumbnail-dir');
+        const result = await findThumbnail(dir);
+        if (!result) return;
+
+        let media;
+        if (result.isVideo) {
+            media = document.createElement('video');
+            media.loop = true;
+            media.autoplay = true;
+            media.muted = true;
+            media.playsInline = true;
+        } else {
+            media = document.createElement('img');
+            media.alt = card.querySelector('h3')?.textContent || '';
+        }
+        media.src = result.src;
+        card.insertBefore(media, card.firstElementChild);
+    }));
+}
+
+document.addEventListener('DOMContentLoaded', loadProjectThumbnails); 
