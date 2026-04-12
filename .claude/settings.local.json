@@ -2,7 +2,39 @@
   "permissions": {
     "allow": [
       "Bash(find D:DesktopPortfolio-simplerPortfolio-simpler -type f -name *.html -o -name *.css -o -name *.js -o -name *.json -o -name *.txt -o -name *.md)",
-      "Bash(git merge:*)"
+      "Bash(git merge:*)",
+      "Bash(mv \"public/Nosecone3.jpg\" \"Nosecone Project/thumbnail/Nosecone3.jpg\")",
+      "Bash(mv \"public/Fibonacci.jpg\" \"Fibonacci Project/thumbnail/Fibonacci.jpg\")",
+      "Bash(mv \"public/StarshipGameThumb.JPG\" \"Starship Game/thumbnail/StarshipGameThumb.JPG\")",
+      "Bash(mv \"public/AIhand.mp4\" \"SawySawy Robot Hand/thumbnail/AIhand.mp4\")",
+      "Bash(mv \"public/SawyCNC.mp4\" \"SawySawy CNC Plasma Cutter/thumbnail/SawyCNC.mp4\")",
+      "Bash(mv public/Nosecone/* \"Nosecone Project/gallery/\")",
+      "Bash(mv public/Fibonacci/* \"Fibonacci Project/gallery/\")",
+      "Bash(rmdir public/Nosecone)",
+      "Bash(rmdir public/Fibonacci)",
+      "Bash(mv \"Nosecone Project/thumbnail/Nosecone3.jpg\" \"Nosecone Project/thumbnail/thumbnail.jpg\")",
+      "Bash(mv \"Fibonacci Project/thumbnail/Fibonacci.jpg\" \"Fibonacci Project/thumbnail/thumbnail.jpg\")",
+      "Bash(mv \"Starship Game/thumbnail/StarshipGameThumb.JPG\" \"Starship Game/thumbnail/thumbnail.JPG\")",
+      "Bash(mv \"SawySawy Robot Hand/thumbnail/AIhand.mp4\" \"SawySawy Robot Hand/thumbnail/thumbnail.mp4\")",
+      "Bash(mv \"SawySawy CNC Plasma Cutter/thumbnail/SawyCNC.mp4\" \"SawySawy CNC Plasma Cutter/thumbnail/thumbnail.mp4\")",
+      "WebFetch(domain:www.etsy.com)",
+      "Bash(npm audit:*)",
+      "Bash(mv \"DIY Home Solar/503375921_10162628790619158_4045464847724443903_n.jpg\" \"DIY Home Solar/gallery/\")",
+      "Bash(mv \"DIY Home Solar/510431734_10162719775894158_6059875296883201995_n.jpg\" \"DIY Home Solar/gallery/\")",
+      "Bash(mv \"DIY Home Solar/Capture.PNG\" \"DIY Home Solar/gallery/\")",
+      "Bash(mv \"Floor Piano/68286319_10157437368059158_1126067389092331520_n.jpg\" \"Floor Piano/gallery/\")",
+      "Bash(mv \"Floor Piano/79370235_10157783098359158_5307570784527450112_n.jpg\" \"Floor Piano/gallery/\")",
+      "Bash(mv \"MOA Crew Painting with Reid Stowe/20250421_183715.jpg\" \"MOA Crew Painting with Reid Stowe/gallery/\")",
+      "Bash(mv \"MOA Crew Painting with Reid Stowe/20250421_184542.jpg\" \"MOA Crew Painting with Reid Stowe/gallery/\")",
+      "Bash(mv \"MOA Crew Painting with Reid Stowe/20250421_190921.jpg\" \"MOA Crew Painting with Reid Stowe/gallery/\")",
+      "Bash(mv \"MOA Crew Painting with Reid Stowe/20250421_191220.jpg\" \"MOA Crew Painting with Reid Stowe/gallery/\")",
+      "Bash(mv \"Starship Schooner Anne/20250417_092621.jpg\" \"Starship Schooner Anne/gallery/\")",
+      "Bash(mv \"Starship Schooner Anne/20250417_093435.jpg\" \"Starship Schooner Anne/gallery/\")",
+      "Bash(mv \"Starship Schooner Anne/20250417_105246.jpg\" \"Starship Schooner Anne/gallery/\")",
+      "Bash(mv \"Starship Schooner Anne/20250417_180908.jpg\" \"Starship Schooner Anne/gallery/\")",
+      "Bash(mv \"Starship Schooner Anne/20250417_181053.jpg\" \"Starship Schooner Anne/gallery/\")",
+      "Bash(mv \"Photo in Jax - 1st Batch \\(MOA\\) - Google Photos_files\"/* \"gallery/\")",
+      "Bash(rmdir \"Photo in Jax - 1st Batch \\(MOA\\) - Google Photos_files\")"
     ]
   }
 }

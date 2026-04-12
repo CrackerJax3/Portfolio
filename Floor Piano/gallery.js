@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const galleryContainer = document.querySelector('.gallery-container');
 
     const images = [
-        '68286319_10157437368059158_1126067389092331520_n.jpg',
         '79370235_10157783098359158_5307570784527450112_n.jpg'
     ];
 

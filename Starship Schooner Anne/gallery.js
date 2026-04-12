@@ -19,16 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
         '20250417_181056.jpg',
         'DJI_0610.JPG',
         'DJI_0622.jpg',
-        'unnamed.jpg',
-        'unnamed(3).jpg',
-        'unnamed(4).jpg',
-        'unnamed(5).jpg',
-        'unnamed(6).jpg',
-        'unnamed(7).jpg',
-        'unnamed(8).jpg',
-        'unnamed.png',
-        'unnamed(1).png',
-        'unnamed(2).png'
     ];
 
     const imagePromises = images.map(filename => {
