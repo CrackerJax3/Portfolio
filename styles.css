@@ -88,6 +88,29 @@ li.nav-divider {
     align-items: center;
     justify-content: center;
     padding-top: 60px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+#home.has-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    pointer-events: none;
+}
+
+#home.has-banner .hero {
+    position: relative;
+    z-index: 1;
+}
+
+#home.has-banner .hero h1,
+#home.has-banner .hero .tagline {
+    color: #fff;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
 }
 
 .hero {

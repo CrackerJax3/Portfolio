@@ -131,3 +131,21 @@ async function loadProjectThumbnails() {
 }
 
 document.addEventListener('DOMContentLoaded', loadProjectThumbnails);
+
+// Hero banner — drop a photo into hero-banner/ and run npm run scan
+async function loadHeroBanner() {
+    try {
+        const res = await fetch('hero-banner/manifest.json');
+        if (!res.ok) return;
+        const files = await res.json();
+        if (!files.length) return;
+        const file = files[0];
+        const src = 'hero-banner/' + encodeURIComponent(file);
+        const homeSection = document.getElementById('home');
+        if (!homeSection) return;
+        homeSection.style.backgroundImage = `url('${src}')`;
+        homeSection.classList.add('has-banner');
+    } catch {}
+}
+
+document.addEventListener('DOMContentLoaded', loadHeroBanner);
