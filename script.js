@@ -98,14 +98,24 @@ async function findThumbnail(dir) {
 }
 
 async function loadProjectThumbnails() {
-    const cards = document.querySelectorAll('.project-card[data-thumbnail-dir]');
+    const cards = document.querySelectorAll('.project-card[data-thumbnail], .project-card[data-thumbnail-dir]');
     await Promise.all([...cards].map(async card => {
-        const dir = card.getAttribute('data-thumbnail-dir');
-        const result = await findThumbnail(dir);
-        if (!result) return;
+        let src, isVideo;
+
+        const direct = card.getAttribute('data-thumbnail');
+        if (direct) {
+            src = direct;
+            isVideo = VIDEO_EXTS.some(e => direct.toLowerCase().endsWith('.' + e));
+        } else {
+            const dir = card.getAttribute('data-thumbnail-dir');
+            const result = await findThumbnail(dir);
+            if (!result) return;
+            src = result.src;
+            isVideo = result.isVideo;
+        }
 
         let media;
-        if (result.isVideo) {
+        if (isVideo) {
             media = document.createElement('video');
             media.loop = true;
             media.autoplay = true;
@@ -115,9 +125,9 @@ async function loadProjectThumbnails() {
             media = document.createElement('img');
             media.alt = card.querySelector('h3')?.textContent || '';
         }
-        media.src = result.src;
+        media.src = src;
         card.insertBefore(media, card.firstElementChild);
     }));
 }
 
-document.addEventListener('DOMContentLoaded', loadProjectThumbnails); 
+document.addEventListener('DOMContentLoaded', loadProjectThumbnails);
