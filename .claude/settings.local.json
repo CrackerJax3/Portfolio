@@ -34,7 +34,12 @@
       "Bash(mv \"Starship Schooner Anne/20250417_180908.jpg\" \"Starship Schooner Anne/gallery/\")",
       "Bash(mv \"Starship Schooner Anne/20250417_181053.jpg\" \"Starship Schooner Anne/gallery/\")",
       "Bash(mv \"Photo in Jax - 1st Batch \\(MOA\\) - Google Photos_files\"/* \"gallery/\")",
-      "Bash(rmdir \"Photo in Jax - 1st Batch \\(MOA\\) - Google Photos_files\")"
+      "Bash(rmdir \"Photo in Jax - 1st Batch \\(MOA\\) - Google Photos_files\")",
+      "Bash(mv \"2m Tall Voronoi Camel/thumbnail/sawycamel.PNG\" \"2m Tall Voronoi Camel/thumbnail/thumbnail.PNG\")",
+      "Bash(mv \"DIY Home Solar/thumbnail/solarroof.jpg\" \"DIY Home Solar/thumbnail/thumbnail.jpg\")",
+      "Bash(mv \"Floor Piano/thumbnail/68286319_10157437368059158_1126067389092331520_n.jpg\" \"Floor Piano/thumbnail/thumbnail.jpg\")",
+      "Bash(mv \"Life Sized Voronoi Arabian Leopard/thumbnail/3dleopard.jpg\" \"Life Sized Voronoi Arabian Leopard/thumbnail/thumbnail.jpg\")",
+      "Bash(mv \"MOA Crew Painting with Reid Stowe/thumbnail/20250421_194440.jpg\" \"MOA Crew Painting with Reid Stowe/thumbnail/thumbnail.jpg\")"
     ]
   }
 }
