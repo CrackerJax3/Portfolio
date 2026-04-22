@@ -143,7 +143,10 @@ async function loadHeroBanner() {
         const src = 'hero-banner/' + encodeURIComponent(file);
         const homeSection = document.getElementById('home');
         if (!homeSection) return;
-        homeSection.style.backgroundImage = `url('${src}')`;
+        // Single consistent 15% dark tint baked into the background at page level
+        const overlay = 'linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20))';
+        document.body.style.backgroundImage = `${overlay}, url('${src}')`;
+        homeSection.style.backgroundImage = `${overlay}, url('${src}')`;
         homeSection.classList.add('has-banner');
     } catch {}
 }

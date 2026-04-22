@@ -1,0 +1,42 @@
+(function () {
+    const IMAGE_EXTS = ['jpg', 'JPG', 'jpeg', 'png', 'PNG', 'webp', 'gif'];
+
+    function applyBackground(src) {
+        const el = document.createElement('div');
+        el.style.cssText = [
+            'position:fixed', 'inset:0', 'z-index:-1',
+            "background-image:url('" + src + "')",
+            'background-size:cover',
+            'background-position:center',
+            'background-repeat:no-repeat',
+            'filter:blur(12px)',
+            'opacity:0.5',
+            'transform:scale(1.08)',
+            'pointer-events:none'
+        ].join(';');
+        document.body.appendChild(el);
+    }
+
+    async function init() {
+        // Prefer explicit meta tag for non-standard thumbnail filenames
+        const meta = document.querySelector('meta[name="thumbnail"]');
+        if (meta && meta.getAttribute('content')) {
+            applyBackground(meta.getAttribute('content'));
+            return;
+        }
+        // Fall back to probing standard thumbnail.ext in ./thumbnail/
+        for (const ext of IMAGE_EXTS) {
+            const src = './thumbnail/thumbnail.' + ext;
+            try {
+                const res = await fetch(src, { method: 'HEAD' });
+                if (res.ok) { applyBackground(src); return; }
+            } catch {}
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
