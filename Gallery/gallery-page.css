@@ -8,6 +8,11 @@
     columns: 3 280px;
     column-gap: 12px;
     margin-top: 32px;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 12px;
+    padding: 16px;
 }
 
 .gallery-collage .collage-item {
@@ -17,7 +22,7 @@
     overflow: hidden;
     cursor: pointer;
     position: relative;
-    background: var(--bg-card);
+    background: rgba(30, 30, 30, 0.4);
 }
 
 .gallery-collage .collage-item img,

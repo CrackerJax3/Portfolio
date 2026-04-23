@@ -40,7 +40,12 @@
       "Bash(mv \"Floor Piano/thumbnail/68286319_10157437368059158_1126067389092331520_n.jpg\" \"Floor Piano/thumbnail/thumbnail.jpg\")",
       "Bash(mv \"Life Sized Voronoi Arabian Leopard/thumbnail/3dleopard.jpg\" \"Life Sized Voronoi Arabian Leopard/thumbnail/thumbnail.jpg\")",
       "Bash(mv \"MOA Crew Painting with Reid Stowe/thumbnail/20250421_194440.jpg\" \"MOA Crew Painting with Reid Stowe/thumbnail/thumbnail.jpg\")",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(grep -E \"\\\\.\\(jpg|jpeg|png|mp4\\)$\")",
+      "Bash(npm install *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)"
     ]
   }
 }

@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="gallery-page.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="thumbnail-manifest" content="../hero-banner/manifest.json">
+    <script>(function(){var d=sessionStorage.getItem('page-swipe'),bg=sessionStorage.getItem('page-bg'),css='';if(bg)css+='body{background-image:'+bg+'}';if(d){var x=d==='left'?'100':'-100';css+='body>*:not(nav):not(#project-bg){transform:translateX('+x+'%);transition:none!important}#page-hud{transform:translateX('+x+'%);transition:none!important}'}if(css){var s=document.createElement('style');s.id='page-init';s.textContent=css;document.head.appendChild(s)}})();</script>
+    <link rel="prefetch" href="../index.html">
+    <script src="../project-bg.js" defer></script>
     <script src="../script.js" defer></script>
     <script src="gallery-page.js" defer></script>
 </head>

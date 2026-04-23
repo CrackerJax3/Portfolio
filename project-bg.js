@@ -3,6 +3,7 @@
 
     function applyBackground(src) {
         const el = document.createElement('div');
+        el.id = 'project-bg';
         el.style.cssText = [
             'position:fixed', 'inset:0', 'z-index:-1',
             "background-image:url('" + src + "')",
@@ -18,7 +19,21 @@
     }
 
     async function init() {
-        // Prefer explicit meta tag for non-standard thumbnail filenames
+        // Manifest meta: fetch a JSON array and use the first entry
+        const manifestMeta = document.querySelector('meta[name="thumbnail-manifest"]');
+        if (manifestMeta) {
+            try {
+                const manifestPath = manifestMeta.getAttribute('content');
+                const res = await fetch(manifestPath);
+                const files = await res.json();
+                if (files.length) {
+                    const dir = manifestPath.replace(/[^/]+$/, '');
+                    applyBackground(dir + encodeURIComponent(files[0]));
+                }
+            } catch {}
+            return;
+        }
+        // Direct path meta tag for non-standard thumbnail filenames
         const meta = document.querySelector('meta[name="thumbnail"]');
         if (meta && meta.getAttribute('content')) {
             applyBackground(meta.getAttribute('content'));

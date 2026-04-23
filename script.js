@@ -140,15 +140,87 @@ async function loadHeroBanner() {
         const files = await res.json();
         if (!files.length) return;
         const file = files[0];
-        const src = 'hero-banner/' + encodeURIComponent(file);
+        // Use absolute URL so it works when stored in sessionStorage and applied from any page
+        const absoluteSrc = new URL('hero-banner/' + encodeURIComponent(file), location.href).href;
         const homeSection = document.getElementById('home');
         if (!homeSection) return;
-        // Single consistent 15% dark tint baked into the background at page level
         const overlay = 'linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20))';
-        document.body.style.backgroundImage = `${overlay}, url('${src}')`;
-        homeSection.style.backgroundImage = `${overlay}, url('${src}')`;
+        const bgValue = `${overlay}, url('${absoluteSrc}')`;
+        document.body.style.backgroundImage = bgValue;
+        homeSection.style.backgroundImage = bgValue;
         homeSection.classList.add('has-banner');
+        // Persist so the next page can apply it before first paint (no black flash)
+        sessionStorage.setItem('page-bg', bgValue);
     } catch {}
 }
 
 document.addEventListener('DOMContentLoaded', loadHeroBanner);
+
+// ── Swipe page transition (Home ↔ Gallery) ───────────────────────────────
+// Slides only the HUD (content below nav). Background and nav stay fixed.
+// Background is persisted in sessionStorage so the next page applies it
+// synchronously before first paint, eliminating the black flash.
+(function () {
+    const DURATION = 400;
+
+    function buildHUD() {
+        const hud = document.createElement('div');
+        hud.id = 'page-hud';
+        [...document.body.children]
+            .filter(el => el.id !== 'page-hud' && el.id !== 'project-bg' && el.tagName !== 'NAV')
+            .forEach(el => hud.appendChild(el));
+        document.body.appendChild(hud);
+        return hud;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const hud = buildHUD();
+        document.body.style.overflowX = 'hidden';
+
+        const dir = sessionStorage.getItem('page-swipe');
+        if (dir) {
+            sessionStorage.removeItem('page-swipe');
+            const startX = dir === 'left' ? '100%' : '-100%';
+            // Lock inline style to the same offscreen position as the CSS init rule,
+            // then remove the init style so only the inline style controls position.
+            hud.style.cssText = `transform:translateX(${startX});transition:none`;
+            const initStyle = document.getElementById('page-init');
+            if (initStyle) initStyle.remove();
+
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+                hud.style.transition = `transform ${DURATION}ms cubic-bezier(0.4,0,0.2,1)`;
+                hud.style.transform = 'translateX(0)';
+                setTimeout(() => {
+                    hud.style.cssText = '';
+                    document.body.style.overflowX = '';
+                }, DURATION + 20);
+            }));
+        } else {
+            document.body.style.overflowX = '';
+        }
+
+        document.addEventListener('click', e => {
+            const link = e.target.closest('a[href]');
+            if (!link) return;
+            const href = link.getAttribute('href');
+            if (!href || href.startsWith('#') || link.target === '_blank') return;
+            if (/^https?:/.test(href)) return;
+
+            const toGallery = /gallery/i.test(href);
+            const toHome    = /index\.html/i.test(href) && !/gallery/i.test(href) && !/privacy/i.test(href);
+            if (!toGallery && !toHome) return;
+
+            e.preventDefault();
+            sessionStorage.setItem('page-swipe', toGallery ? 'left' : 'right');
+            document.body.style.overflowX = 'hidden';
+            hud.style.transition = `transform ${DURATION}ms cubic-bezier(0.4,0,0.2,1)`;
+            hud.style.transform = toGallery ? 'translateX(-100%)' : 'translateX(100%)';
+            // Navigate after the first painted frame so the browser loads the
+            // next page during the animation — it has the full DURATION to finish
+            // loading before it needs to be visible.
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+                window.location.href = href;
+            }));
+        });
+    });
+})();
