@@ -1,9 +1,9 @@
 // Run with: npm run scan
-// Scans Gallery/photos/ and hero-banner/ for media files and writes manifest.json
+// Scans Gallery/photos/, each project's gallery/, and hero-banner/ for media files.
 // Run this before pushing whenever you add or remove photos.
 
 import { readdirSync, writeFileSync, existsSync, mkdirSync } from 'fs';
-import { extname } from 'path';
+import { extname, join } from 'path';
 
 const MEDIA_EXTS = new Set([
     '.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif',
@@ -26,6 +26,29 @@ const galleryFiles = scanDir('Gallery/photos');
 writeFileSync('Gallery/photos/manifest.json', JSON.stringify(galleryFiles, null, 2));
 console.log(`Gallery: ${galleryFiles.length} file(s) → Gallery/photos/manifest.json`);
 if (galleryFiles.length) console.log('  ' + galleryFiles.join('\n  '));
+
+// --- Per-project galleries ---
+const PROJECTS = [
+    'Nosecone Project',
+    'Fibonacci Project',
+    'SawySawy Robot Hand',
+    'SawySawy CNC Plasma Cutter',
+    'Floor Piano',
+    'DIY Home Solar',
+    'MOA Crew Painting with Reid Stowe',
+    'Starship Schooner Anne',
+    'Colossal Sculpture with Sergio Furnari',
+    'Corbusier Saudi Style Sofa',
+    'Life Sized Voronoi Arabian Leopard',
+    '2m Tall Voronoi Camel',
+];
+for (const project of PROJECTS) {
+    const dir = join(project, 'gallery');
+    const files = scanDir(dir);
+    if (!existsSync(dir)) continue;
+    writeFileSync(join(dir, 'manifest.json'), JSON.stringify(files, null, 2));
+    console.log(`${project}: ${files.length} file(s) → ${dir}/manifest.json`);
+}
 
 // --- Hero Banner ---
 const bannerFiles = scanDir('hero-banner');

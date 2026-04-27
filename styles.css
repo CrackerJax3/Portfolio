@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 :root {
     --bg-primary: #111111;
@@ -158,10 +158,11 @@ li.nav-divider {
 }
 
 .hero h1 {
-    font-size: clamp(2.2rem, 6vw, 4rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.6rem, 7vw, 4.8rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
     margin-bottom: 1rem;
 }
 
@@ -239,9 +240,11 @@ section h2 {
     border-radius: 12px;
     overflow: hidden;
     background: transparent;
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: flex;
     flex-direction: column;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .project-card:hover {
@@ -279,25 +282,6 @@ section h2 {
     font-size: 0.82rem;
     color: var(--text-secondary);
     line-height: 1.55;
-    flex: 1;
-}
-
-.project-link {
-    display: inline-block;
-    margin-top: 0.85rem;
-    padding: 0.45rem 1rem;
-    background: var(--accent);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 0.82rem;
-    font-weight: 500;
-    transition: background 0.15s;
-    align-self: flex-start;
-}
-
-.project-link:hover {
-    background: var(--accent-hover);
 }
 
 /* ── Footer ─────────────────────────────────── */

@@ -3,16 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jackson Yuen's Portfolio</title>
-    <meta name="description" content="Portfolio for Jackson Yuen — maker, builder, and creator of art installations, robotics, games, and products." />
-    <meta name="keywords" content="Portfolio, Maker, Projects, Products, Jackson Yuen, MSX BocaChica, Subotix LLC">
+    <title>Jackson Yuen — Maker &amp; Builder | Subotix LLC | MSX Boca Chica</title>
+    <meta name="description" content="Jackson Yuen is a maker, builder, and artist with projects spanning Boca Chica (Brownsville, TX), New York City, Assisi Italy, and Saudi Arabia. Founder of Subotix LLC and team member at MSX Boca Chica." />
+    <meta name="keywords" content="Jackson Yuen, Subotix LLC, MSX Boca Chica, Brownsville Texas, Boca Chica, New York City, NYC, Assisi Italy, Saudi Arabia, maker, builder, artist, fabricator, robotics, sculpture, installations, SawySawy, Sergio Furnari, Reid Stowe" />
     <meta name="author" content="Jackson Yuen">
+    <link rel="canonical" href="https://crackerjax3.github.io/Portfolio/" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://crackerjax3.github.io/Portfolio/" />
+    <meta property="og:title" content="Jackson Yuen — Maker &amp; Builder | Subotix LLC" />
+    <meta property="og:description" content="Maker, builder, and artist with projects in Boca Chica TX, New York City, Assisi Italy, and Saudi Arabia. Founder of Subotix LLC." />
+    <meta property="og:image" content="https://crackerjax3.github.io/Portfolio/public/Nosecone.jpg" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Jackson Yuen — Maker &amp; Builder | Subotix LLC" />
+    <meta name="twitter:description" content="Maker, builder, and artist with projects in Boca Chica TX, NYC, Assisi Italy, and Saudi Arabia." />
+    <meta name="twitter:image" content="https://crackerjax3.github.io/Portfolio/public/Nosecone.jpg" />
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Jackson Yuen",
+      "url": "https://crackerjax3.github.io/Portfolio/",
+      "jobTitle": "Maker, Builder, Artist",
+      "description": "Maker, builder, and artist with projects spanning Boca Chica (Brownsville, TX), New York City, Assisi Italy, and Saudi Arabia.",
+      "worksFor": [
+        { "@type": "Organization", "name": "Subotix LLC", "url": "https://sawysawy.com" },
+        { "@type": "Organization", "name": "MSX Boca Chica" }
+      ],
+      "address": { "@type": "PostalAddress", "addressLocality": "Brownsville", "addressRegion": "TX", "addressCountry": "US" },
+      "sameAs": [
+        "https://github.com/CrackerJax3",
+        "https://huggingface.co/Crackerjax2",
+        "https://www.thingiverse.com/crackerjax2/designs"
+      ]
+    }
+    </script>
     <link rel="icon" type="image/x-icon" href="./public/ChineseEmoji.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="prefetch" href="Gallery/index.html">
     <script src="script.js" defer></script>
-    <script>(function(){var d=sessionStorage.getItem('page-swipe'),bg=sessionStorage.getItem('page-bg'),css='';if(bg)css+='body{background-image:'+bg+'}';if(d){var x=d==='left'?'100':'-100';css+='body>*:not(nav):not(#project-bg){transform:translateX('+x+'%);transition:none!important}#page-hud{transform:translateX('+x+'%);transition:none!important}'}if(css){var s=document.createElement('style');s.id='page-init';s.textContent=css;document.head.appendChild(s)}})();</script>
+    <script>(function(){var bg=sessionStorage.getItem('page-bg');if(bg){var s=document.createElement('style');s.textContent='body{background-image:'+bg+'}';document.head.appendChild(s)}})();</script>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6BF68Q3PCD"></script>
@@ -47,7 +80,7 @@
     <section id="home">
         <div class="hero">
             <h1>Jackson Yuen</h1>
-            <p class="tagline">Take the road less travelled</p>
+            <p class="tagline">Mom said go play outside</p>
             <div class="hero-badges">
                 <span class="hero-badge">Maker</span>
                 <span class="hero-badge">Builder</span>
@@ -69,97 +102,84 @@
         <h2>Projects</h2>
         <div class="section-divider"></div>
         <div class="projects-grid">
-            <div class="project-card" data-thumbnail-dir="Nosecone Project/thumbnail">
+            <a class="project-card" href="Nosecone Project/index.html" data-thumbnail-dir="Nosecone Project/thumbnail">
                 <div class="card-body">
                     <h3>MSX Nosecone Sculpture</h3>
                     <p>Design, procurement, fabrication, and installation of a large-scale sculpture.</p>
-                    <a href="Nosecone Project/index.html" class="project-link">View Project</a>
                 </div>
-            </div>
-            <div class="project-card" data-thumbnail-dir="Fibonacci Project/thumbnail">
+            </a>
+            <a class="project-card" href="Fibonacci Project/index.html" data-thumbnail-dir="Fibonacci Project/thumbnail">
                 <div class="card-body">
                     <h3>MSX Fibonacci Sculpture</h3>
                     <p>Utilizing leftover materials from the Nosecone Project while providing hands-on experience to a student from Denmark.</p>
-                    <a href="Fibonacci Project/index.html" class="project-link">View Project</a>
                 </div>
-            </div>
-            <div class="project-card" data-thumbnail-dir="Starship Game/thumbnail">
+            </a>
+            <a class="project-card" href="https://crackerjax3.github.io/Starship-Game/" target="_blank" data-thumbnail-dir="Starship Game/thumbnail">
                 <div class="card-body">
                     <h3>Starship Game</h3>
                     <p>Remix of areyasouka/spacex-starship-lander — improved graphics and optimized for mobile gameplay.</p>
-                    <a href="https://crackerjax3.github.io/Starship-Game/" class="project-link" target="_blank">Play Game</a>
                 </div>
-            </div>
-            <div class="project-card" data-thumbnail="SawySawy Robot Hand/thumbnail/thumbnail.mp4">
+            </a>
+            <a class="project-card" href="SawySawy Robot Hand/index.html" data-thumbnail="SawySawy Robot Hand/thumbnail/thumbnail.mp4">
                 <div class="card-body">
                     <h3>SawySawy OpenCV Robot Hand</h3>
                     <p>Designed the laser-cut robot hand, wired the SawySawy board, and experimented with OpenCV for hand tracking.</p>
-                    <a href="SawySawy Robot Hand/index.html" class="project-link">View Project</a>
                 </div>
-            </div>
-            <div class="project-card" data-thumbnail="SawySawy CNC Plasma Cutter/thumbnail/thumbnail.mp4">
+            </a>
+            <a class="project-card" href="SawySawy CNC Plasma Cutter/index.html" data-thumbnail="SawySawy CNC Plasma Cutter/thumbnail/thumbnail.mp4">
                 <div class="card-body">
                     <h3>SawySawy CNC Plasma Cutter</h3>
                     <p>Designed the experimental gantry frame, wired the SawySawy board, and controlled with GRBL.</p>
-                    <a href="SawySawy CNC Plasma Cutter/index.html" class="project-link">View Project</a>
                 </div>
-            </div>
-            <div class="project-card" data-thumbnail="Floor Piano/thumbnail/68286319_10157437368059158_1126067389092331520_n.jpg">
+            </a>
+            <a class="project-card" href="Floor Piano/index.html" data-thumbnail="Floor Piano/thumbnail/thumbnail.jpg">
                 <div class="card-body">
-                    <h3>Floor Piano</h3>
+                    <h3>UNSDG MakeyMakey Floor Piano</h3>
                     <p>A large-scale interactive floor piano installation.</p>
-                    <a href="Floor Piano/index.html" class="project-link">View Project</a>
                 </div>
-            </div>
-            <div class="project-card" data-thumbnail="DIY Home Solar/thumbnail/solarroof.jpg">
+            </a>
+            <a class="project-card" href="DIY Home Solar/index.html" data-thumbnail="DIY Home Solar/thumbnail/solarroof.jpg">
                 <div class="card-body">
                     <h3>DIY Home Solar</h3>
                     <p>Designed and installed a DIY residential solar power system.</p>
-                    <a href="DIY Home Solar/index.html" class="project-link">View Project</a>
                 </div>
-            </div>
-            <div class="project-card" data-thumbnail="MOA Crew Painting with Reid Stowe/thumbnail/20250421_194440.jpg">
+            </a>
+            <a class="project-card" href="MOA Crew Painting with Reid Stowe/index.html" data-thumbnail="MOA Crew Painting with Reid Stowe/thumbnail/20250421_194440.jpg">
                 <div class="card-body">
                     <h3>(MOA) Crew Painting with Reid Stowe</h3>
                     <p>Collaborative crew painting project with ocean voyager Reid Stowe.</p>
-                    <a href="MOA Crew Painting with Reid Stowe/index.html" class="project-link">View Project</a>
                 </div>
-            </div>
-            <div class="project-card" data-thumbnail="Starship Schooner Anne/thumbnail/DJI_0580.JPG">
+            </a>
+            <a class="project-card" href="Starship Schooner Anne/index.html" data-thumbnail="Starship Schooner Anne/thumbnail/DJI_0580.JPG">
                 <div class="card-body">
                     <h3>Starship Schooner (Anne)</h3>
                     <p>Work aboard the sailing schooner Anne with Reid Stowe's crew.</p>
-                    <a href="Starship Schooner Anne/index.html" class="project-link">View Project</a>
                 </div>
-            </div>
-            <div class="project-card" data-thumbnail="Colossal Sculpture with Sergio Furnari/thumbnail/vlcsnap-2026-04-21-11h07m00s485.png">
+            </a>
+            <a class="project-card" href="Colossal Sculpture with Sergio Furnari/index.html" data-thumbnail="Colossal Sculpture with Sergio Furnari/thumbnail/vlcsnap-2026-04-21-11h07m00s485.png">
                 <div class="card-body">
                     <h3>Colossal Sculpture with Sergio Furnari</h3>
                     <p>Large-scale sculpture collaboration with artist Sergio Furnari.</p>
-                    <a href="Colossal Sculpture with Sergio Furnari/index.html" class="project-link">View Project</a>
                 </div>
-            </div>
-            <div class="project-card" data-thumbnail="Life Sized Voronoi Arabian Leopard/thumbnail/3dleopard.jpg">
+            </a>
+            <a class="project-card" href="Life Sized Voronoi Arabian Leopard/index.html" data-thumbnail="Life Sized Voronoi Arabian Leopard/thumbnail/3dleopard.jpg">
                 <div class="card-body">
                     <h3>Life Sized Voronoi Arabian Leopard</h3>
                     <p>Life-sized sculpture of an Arabian leopard built using a voronoi structural pattern.</p>
-                    <a href="Life Sized Voronoi Arabian Leopard/index.html" class="project-link">View Project</a>
                 </div>
-            </div>
-            <div class="project-card" data-thumbnail="2m Tall Voronoi Camel/thumbnail/sawycamel.PNG">
+            </a>
+            <a class="project-card" href="2m Tall Voronoi Camel/index.html" data-thumbnail="2m Tall Voronoi Camel/thumbnail/sawycamel.PNG">
                 <div class="card-body">
                     <h3>2m Tall Voronoi Camel</h3>
                     <p>A 2-meter tall camel sculpture built using a voronoi structural pattern.</p>
-                    <a href="2m Tall Voronoi Camel/index.html" class="project-link">View Project</a>
                 </div>
-            </div>
-            <div class="project-card" data-thumbnail="Corbusier Saudi Style Sofa/thumbnail/WhatsApp Image 2026-04-12 at 12.54.38.jpeg">
+            </a>
+            <a class="project-card" href="Corbusier Saudi Style Sofa/index.html" data-thumbnail="Corbusier Saudi Style Sofa/thumbnail/WhatsApp Image 2026-04-12 at 12.54.38.jpeg">
                 <div class="card-body">
                     <h3>Corbusier Saudi Style Sofa</h3>
                     <p>A sofa design merging Le Corbusier modernist principles with Saudi Arabian style.</p>
-                    <a href="Corbusier Saudi Style Sofa/index.html" class="project-link">View Project</a>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 
