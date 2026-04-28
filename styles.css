@@ -305,6 +305,16 @@ section h2 {
     font-size: 0.8rem;
 }
 
+img.favicon {
+    width: 13px;
+    height: 13px;
+    filter: brightness(0) invert(1);
+    opacity: 0.75;
+    vertical-align: middle;
+    flex-shrink: 0;
+    display: inline-block;
+}
+
 /* ── Project description links ───────────────── */
 
 .project-description ul li a {
