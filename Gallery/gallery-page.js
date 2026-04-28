@@ -4,21 +4,6 @@ function isVideo(filename) {
     return VIDEO_EXTS.some(e => filename.toLowerCase().endsWith(e));
 }
 
-const PROJECTS = [
-    'Nosecone Project',
-    'Fibonacci Project',
-    'SawySawy Robot Hand',
-    'SawySawy CNC Plasma Cutter',
-    'Floor Piano',
-    'DIY Home Solar',
-    'MOA Crew Painting with Reid Stowe',
-    'Starship Schooner Anne',
-    'Colossal Sculpture with Sergio Furnari',
-    'Corbusier Saudi Style Sofa',
-    'Life Sized Voronoi Arabian Leopard',
-    '2m Tall Voronoi Camel',
-];
-
 let items = [];
 let currentIndex = 0;
 
@@ -69,19 +54,19 @@ function navigate(dir) {
 }
 
 async function loadGallery() {
-    for (const project of PROJECTS) {
-        try {
-            const res = await fetch('../' + encodeURIComponent(project) + '/gallery/manifest.json');
-            if (!res.ok) continue;
-            const files = await res.json();
-            files.forEach(file => {
-                items.push({
-                    src: '../' + encodeURIComponent(project) + '/gallery/' + encodeURIComponent(file),
-                    vid: isVideo(file),
-                });
-            });
-        } catch {}
+    let manifest;
+    try {
+        const res = await fetch('photos/manifest.json');
+        if (!res.ok) return;
+        manifest = await res.json();
+    } catch {
+        return;
     }
+
+    items = manifest.map(file => ({
+        src: 'photos/' + encodeURIComponent(file),
+        vid: isVideo(file),
+    }));
 
     const collage = document.getElementById('gallery-collage');
     const emptyMsg = document.getElementById('gallery-empty');
