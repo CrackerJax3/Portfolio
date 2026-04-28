@@ -146,10 +146,9 @@ async function loadHeroBanner() {
         if (!homeSection) return;
         const overlay = 'linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20))';
         const bgValue = `${overlay}, url('${absoluteSrc}')`;
-        document.body.style.backgroundImage = bgValue;
-        homeSection.style.backgroundImage = bgValue;
+        const bgLayer = document.getElementById('page-bg-layer');
+        if (bgLayer) bgLayer.style.backgroundImage = bgValue;
         homeSection.classList.add('has-banner');
-        // Persist so the next page can apply it before first paint (no black flash)
         sessionStorage.setItem('page-bg', bgValue);
     } catch {}
 }

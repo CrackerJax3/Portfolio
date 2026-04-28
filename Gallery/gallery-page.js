@@ -4,6 +4,21 @@ function isVideo(filename) {
     return VIDEO_EXTS.some(e => filename.toLowerCase().endsWith(e));
 }
 
+const PROJECTS = [
+    'Nosecone Project',
+    'Fibonacci Project',
+    'SawySawy Robot Hand',
+    'SawySawy CNC Plasma Cutter',
+    'Floor Piano',
+    'DIY Home Solar',
+    'MOA Crew Painting with Reid Stowe',
+    'Starship Schooner Anne',
+    'Colossal Sculpture with Sergio Furnari',
+    'Corbusier Saudi Style Sofa',
+    'Life Sized Voronoi Arabian Leopard',
+    '2m Tall Voronoi Camel',
+];
+
 let items = [];
 let currentIndex = 0;
 
@@ -26,19 +41,19 @@ function closeLightbox() {
 }
 
 function showLightboxItem() {
-    const file = items[currentIndex];
+    const { src, vid: isVid } = items[currentIndex];
     const img = document.getElementById('lb-img');
     const video = document.getElementById('lb-video');
     const counter = document.getElementById('lb-counter');
 
-    if (isVideo(file)) {
-        video.src = 'photos/' + encodeURIComponent(file);
+    if (isVid) {
+        video.src = src;
         video.classList.add('active');
         img.classList.remove('active');
         img.src = '';
     } else {
-        img.src = 'photos/' + encodeURIComponent(file);
-        img.alt = file;
+        img.src = src;
+        img.alt = '';
         img.classList.add('active');
         video.classList.remove('active');
         video.pause();
@@ -54,31 +69,36 @@ function navigate(dir) {
 }
 
 async function loadGallery() {
-    let manifest;
-    try {
-        const res = await fetch('photos/manifest.json');
-        manifest = await res.json();
-    } catch {
-        return;
+    for (const project of PROJECTS) {
+        try {
+            const res = await fetch('../' + encodeURIComponent(project) + '/gallery/manifest.json');
+            if (!res.ok) continue;
+            const files = await res.json();
+            files.forEach(file => {
+                items.push({
+                    src: '../' + encodeURIComponent(project) + '/gallery/' + encodeURIComponent(file),
+                    vid: isVideo(file),
+                });
+            });
+        } catch {}
     }
 
-    items = manifest;
     const collage = document.getElementById('gallery-collage');
     const emptyMsg = document.getElementById('gallery-empty');
 
     if (!items.length) return;
     emptyMsg.remove();
 
-    items.forEach((file, index) => {
+    items.forEach(({ src, vid: isVid }, index) => {
         const div = document.createElement('div');
         div.className = 'collage-item';
         div.setAttribute('role', 'button');
         div.setAttribute('tabindex', '0');
         div.setAttribute('aria-label', `Open photo ${index + 1}`);
 
-        if (isVideo(file)) {
+        if (isVid) {
             const vid = document.createElement('video');
-            vid.src = 'photos/' + encodeURIComponent(file);
+            vid.src = src;
             vid.muted = true;
             vid.loop = true;
             vid.autoplay = true;
@@ -86,7 +106,7 @@ async function loadGallery() {
             div.appendChild(vid);
         } else {
             const img = document.createElement('img');
-            img.src = 'photos/' + encodeURIComponent(file);
+            img.src = src;
             img.alt = '';
             img.loading = 'lazy';
             div.appendChild(img);
@@ -97,7 +117,6 @@ async function loadGallery() {
         collage.appendChild(div);
     });
 
-    // Lightbox controls
     document.getElementById('lb-close').addEventListener('click', closeLightbox);
     document.getElementById('lb-prev').addEventListener('click', () => navigate(-1));
     document.getElementById('lb-next').addEventListener('click', () => navigate(1));
@@ -113,7 +132,6 @@ async function loadGallery() {
         if (e.key === 'ArrowRight') navigate(1);
     });
 
-    // Swipe support
     let touchStartX = 0;
     document.getElementById('lightbox').addEventListener('touchstart', e => {
         touchStartX = e.changedTouches[0].screenX;

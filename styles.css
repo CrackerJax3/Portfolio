@@ -24,14 +24,16 @@ body {
     color: var(--text-primary);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     line-height: 1.6;
-    background-attachment: fixed;
+}
+
+#page-bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-}
-
-@media (hover: none) and (pointer: coarse) {
-    body { background-attachment: scroll; }
+    pointer-events: none;
 }
 
 /* ── Navigation ─────────────────────────────── */
@@ -99,18 +101,7 @@ li.nav-divider {
     align-items: center;
     justify-content: center;
 
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     position: relative;
-}
-
-/* Fixed attachment breaks on iOS Safari — fall back to scroll */
-@media (hover: none) and (pointer: coarse) {
-    #home {
-        background-attachment: scroll;
-    }
 }
 
 #home.has-banner .hero h1,
