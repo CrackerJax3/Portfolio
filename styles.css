@@ -308,11 +308,10 @@ section h2 {
 img.favicon {
     width: 13px;
     height: 13px;
-    filter: brightness(0) invert(1);
-    opacity: 0.75;
     vertical-align: middle;
     flex-shrink: 0;
     display: inline-block;
+    border-radius: 2px;
 }
 
 /* ── Project description links ───────────────── */
