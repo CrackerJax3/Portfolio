@@ -54,4 +54,19 @@
     } else {
         init();
     }
+
+    // Mobile nav toggle — works on all project pages
+    document.addEventListener('DOMContentLoaded', function () {
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        if (!menuBtn || !navLinks) return;
+        menuBtn.addEventListener('click', function () {
+            navLinks.classList.toggle('active');
+        });
+        document.addEventListener('click', function (e) {
+            if (!menuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+    });
 })();
