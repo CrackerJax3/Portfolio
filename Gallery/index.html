@@ -18,11 +18,9 @@
     <link rel="stylesheet" href="gallery-page.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script>(function(){var bg=sessionStorage.getItem('page-bg');if(bg){var s=document.createElement('style');s.textContent='#page-bg-layer{background-image:'+bg+'}';document.head.appendChild(s)}})();</script>
+    <script src="gallery-data.js"></script>
     <link rel="prefetch" href="../index.html">
     <script src="../project-bg.js" defer></script>
-    <script src="../script.js" defer></script>
-    <script src="gallery-data.js" defer></script>
-    <script src="gallery-page.js" defer></script>
 </head>
 <body>
 <div id="page-bg-layer"></div>
@@ -69,5 +67,7 @@
     <footer>
         <p>© 2025 Jackson Yuen &nbsp;·&nbsp; <a href="https://subotix.etsy.com" target="_blank">Subotix LLC</a> &nbsp;·&nbsp; <a href="../privacy-policy.html">Privacy Policy</a></p>
     </footer>
+    <script src="gallery-page.js"></script>
+    <script>loadGallery();</script>
 </body>
 </html>

@@ -119,4 +119,3 @@ function loadGallery() {
     }, { passive: true });
 }
 
-document.addEventListener('DOMContentLoaded', loadGallery);
