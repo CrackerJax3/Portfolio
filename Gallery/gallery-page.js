@@ -80,12 +80,15 @@ function loadGallery() {
             vid.loop = true;
             vid.autoplay = true;
             vid.playsInline = true;
+            vid.addEventListener('loadeddata', () => div.classList.add('loaded'));
             div.appendChild(vid);
         } else {
             const img = document.createElement('img');
             img.src = src;
             img.alt = '';
             img.loading = 'lazy';
+            img.addEventListener('load', () => div.classList.add('loaded'));
+            img.addEventListener('error', () => div.classList.add('loaded'));
             div.appendChild(img);
         }
 

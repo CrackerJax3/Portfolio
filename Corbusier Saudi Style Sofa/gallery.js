@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             vid.loop = true;
             vid.playsInline = true;
             vid.style.width = '100%';
+            vid.addEventListener('loadeddata', () => item.classList.add('loaded'));
             item.appendChild(vid);
         } else {
             const img = document.createElement('img');
@@ -40,6 +41,8 @@ document.addEventListener('DOMContentLoaded', async function () {
             img.loading = 'lazy';
             img.style.cursor = 'pointer';
             img.onclick = () => openLightbox(imageFiles.indexOf(file));
+            img.addEventListener('load', () => item.classList.add('loaded'));
+            img.addEventListener('error', () => item.classList.add('loaded'));
             item.appendChild(img);
 
             if (caption) {

@@ -5,29 +5,49 @@
 }
 
 .gallery-collage {
-    columns: 3 280px;
-    column-gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 10px;
     margin-top: 32px;
-    border-radius: 12px;
     padding: 16px;
 }
 
 .gallery-collage .collage-item {
-    break-inside: avoid;
-    margin-bottom: 12px;
     border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
     position: relative;
-    background: rgba(30, 30, 30, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* shimmer sweep while loading */
+.gallery-collage .collage-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+    animation: gallery-shimmer 1.6s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.gallery-collage .collage-item.loaded::before {
+    display: none;
 }
 
 .gallery-collage .collage-item img,
 .gallery-collage .collage-item video {
     display: block;
     width: 100%;
-    height: auto;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    height: 220px;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.3s ease;
+}
+
+.gallery-collage .collage-item.loaded img,
+.gallery-collage .collage-item.loaded video {
+    opacity: 1;
 }
 
 .gallery-collage .collage-item:hover img,
@@ -36,18 +56,15 @@
     opacity: 0.85;
 }
 
+@keyframes gallery-shimmer {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
 .gallery-empty {
     color: var(--text-secondary);
     font-size: 0.95rem;
     margin-top: 24px;
-}
-
-.gallery-empty code {
-    background: var(--bg-card);
-    border: 1px solid var(--border-light);
-    border-radius: 4px;
-    padding: 0.1em 0.4em;
-    font-size: 0.9em;
 }
 
 /* Lightbox */
@@ -126,11 +143,13 @@
 
 @media (max-width: 600px) {
     .gallery-collage {
-        columns: 2 160px;
-        column-gap: 8px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+        padding: 8px;
     }
-    .gallery-collage .collage-item {
-        margin-bottom: 8px;
+    .gallery-collage .collage-item img,
+    .gallery-collage .collage-item video {
+        height: 160px;
     }
     .lb-prev { left: 6px; }
     .lb-next { right: 6px; }
