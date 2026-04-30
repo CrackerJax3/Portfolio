@@ -53,25 +53,17 @@ function navigate(dir) {
     showLightboxItem();
 }
 
-async function loadGallery() {
-    let manifest;
-    try {
-        const res = await fetch('photos/manifest.json');
-        if (!res.ok) return;
-        manifest = await res.json();
-    } catch {
-        return;
-    }
+function loadGallery() {
+    const files = window.GALLERY_FILES;
+    if (!files || !files.length) return;
 
-    items = manifest.map(file => ({
+    items = files.map(file => ({
         src: 'photos/' + encodeURIComponent(file),
         vid: isVideo(file),
     }));
 
     const collage = document.getElementById('gallery-collage');
     const emptyMsg = document.getElementById('gallery-empty');
-
-    if (!items.length) return;
     emptyMsg.remove();
 
     items.forEach(({ src, vid: isVid }, index) => {

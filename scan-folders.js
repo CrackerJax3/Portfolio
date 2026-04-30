@@ -24,8 +24,8 @@ function scanDir(dir) {
 // --- Gallery ---
 const galleryFiles = scanDir('Gallery/photos');
 writeFileSync('Gallery/photos/manifest.json', JSON.stringify(galleryFiles, null, 2));
-console.log(`Gallery: ${galleryFiles.length} file(s) → Gallery/photos/manifest.json`);
-if (galleryFiles.length) console.log('  ' + galleryFiles.join('\n  '));
+writeFileSync('Gallery/gallery-data.js', `window.GALLERY_FILES=${JSON.stringify(galleryFiles)};\n`);
+console.log(`Gallery: ${galleryFiles.length} file(s) → Gallery/photos/manifest.json + Gallery/gallery-data.js`);
 
 // --- Per-project galleries ---
 const PROJECTS = [
