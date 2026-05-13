@@ -132,24 +132,56 @@ async function loadProjectThumbnails() {
 
 document.addEventListener('DOMContentLoaded', loadProjectThumbnails);
 
-// Hero banner — drop a photo into hero-banner/ and run npm run scan
+// Hero banner — drop a photo (and optionally a video) into hero-banner/ and run npm run scan.
+// The photo loads immediately as the background; if a video is also present it loads in the
+// background and cross-fades in once it can play.
 async function loadHeroBanner() {
     try {
         const res = await fetch('hero-banner/manifest.json');
         if (!res.ok) return;
         const files = await res.json();
         if (!files.length) return;
-        const file = files[0];
-        // Use absolute URL so it works when stored in sessionStorage and applied from any page
-        const absoluteSrc = new URL('hero-banner/' + encodeURIComponent(file), location.href).href;
+
+        const videoExts = ['.mp4', '.webm', '.MP4', '.WEBM'];
+        const imageFile = files.find(f => !videoExts.some(ext => f.endsWith(ext)));
+        const videoFile = files.find(f =>  videoExts.some(ext => f.endsWith(ext)));
+
         const homeSection = document.getElementById('home');
         if (!homeSection) return;
-        const overlay = 'linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.20))';
-        const bgValue = `${overlay}, url('${absoluteSrc}')`;
         const bgLayer = document.getElementById('page-bg-layer');
-        if (bgLayer) bgLayer.style.backgroundImage = bgValue;
-        homeSection.classList.add('has-banner');
-        sessionStorage.setItem('page-bg', bgValue);
+
+        if (imageFile) {
+            const absoluteSrc = new URL('hero-banner/' + encodeURIComponent(imageFile), location.href).href;
+            const bgValue = `url('${absoluteSrc}')`;
+            if (bgLayer) bgLayer.style.backgroundImage = bgValue;
+            sessionStorage.setItem('page-bg', bgValue);
+        }
+
+        if (imageFile || videoFile) {
+            homeSection.classList.add('has-banner');
+        }
+
+        if (videoFile) {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            const videoSrc = new URL('hero-banner/' + encodeURIComponent(videoFile), location.href).href;
+            const video = document.createElement('video');
+            video.id = 'hero-video';
+            video.loop = true;
+            video.muted = true;
+            video.playsInline = true;
+            video.preload = 'auto';
+            video.src = videoSrc;
+            if (bgLayer) {
+                bgLayer.insertAdjacentElement('afterend', video);
+            } else {
+                document.body.insertBefore(video, document.body.firstChild);
+            }
+            video.addEventListener('canplay', () => {
+                video.play().catch(() => {});
+                video.style.opacity = '1';
+            }, { once: true });
+        }
     } catch {}
 }
 
