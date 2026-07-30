@@ -200,6 +200,14 @@ li.nav-divider {
     margin-bottom: 1.5rem;
 }
 
+.hero-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    opacity: 0.75;
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+}
+
 .hero-badges {
     display: flex;
     gap: 0.6rem;
