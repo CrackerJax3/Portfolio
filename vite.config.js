@@ -18,6 +18,7 @@ export default defineConfig({
         { src: 'Life Sized Voronoi Arabian Leopard', dest: '.' },
         { src: 'MOA Crew Painting with Reid Stowe', dest: '.' },
         { src: 'Nosecone Project', dest: '.' },
+        { src: 'Resume', dest: '.' },
         { src: 'SawySawy CNC Plasma Cutter', dest: '.' },
         { src: 'SawySawy Robot Hand', dest: '.' },
         { src: 'Starship Game', dest: '.' },
