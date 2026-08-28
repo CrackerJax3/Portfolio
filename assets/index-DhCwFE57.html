@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery — Jackson Yuen | Maker &amp; Builder</title>
+    <meta name="description" content="Photo gallery of Jackson Yuen's projects — sculptures, installations, robotics, and more from Boca Chica TX, NYC, Assisi Italy, and Saudi Arabia." />
+    <meta name="keywords" content="Jackson Yuen, gallery, photos, projects, Subotix LLC, MSX Boca Chica, Brownsville Texas, NYC, Assisi Italy, Saudi Arabia" />
+    <meta name="author" content="Jackson Yuen">
+    <link rel="canonical" href="https://jaxyuen.com/Gallery/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jaxyuen.com/Gallery/" />
+    <meta property="og:title" content="Gallery — Jackson Yuen" />
+    <meta property="og:description" content="Photos of Jackson Yuen's projects across Boca Chica TX, NYC, Assisi Italy, and Saudi Arabia." />
+    <meta property="og:image" content="https://jaxyuen.com/Nosecone.jpg" />
+    <link rel="icon" type="image/jpeg" href="/favicon.jpg">
+    <link rel="apple-touch-icon" href="/favicon.jpg">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="gallery-page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>(function(){var bg=sessionStorage.getItem('page-bg');if(bg){var s=document.createElement('style');s.textContent='#page-bg-layer{background-image:'+bg+'}';document.head.appendChild(s)}})();</script>
+    <script src="gallery-data.js"></script>
+    <link rel="prefetch" href="../index.html">
+    <script src="../project-bg.js" defer></script>
+</head>
+<body>
+<div id="page-bg-layer"></div>
+    <nav>
+        <div class="nav-content">
+            <a class="nav-brand" href="../index.html">JAX</a>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../Gallery/index.html">Gallery</a></li>
+                <li class="nav-divider"></li>
+                <li><a href="https://github.com/CrackerJax3" target="_blank">GitHub</a></li>
+                <li><a href="https://huggingface.co/Crackerjax2" target="_blank">HuggingFace</a></li>
+                <li><a href="https://www.thingiverse.com/crackerjax2/designs" target="_blank">Thingiverse</a></li>
+                <li><a href="https://www.linkedin.com/in/jackson-yuen-9132bb183" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="gallery-page-section">
+        <p class="section-label">Photos</p>
+        <h2>Gallery</h2>
+        <div class="section-divider"></div>
+        <div id="gallery-collage" class="gallery-collage">
+            <p class="gallery-empty" id="gallery-empty">Loading photos…</p>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+        <button class="lb-close" id="lb-close" aria-label="Close"><i class="fa fa-times"></i></button>
+        <button class="lb-prev" id="lb-prev" aria-label="Previous"><i class="fa fa-chevron-left"></i></button>
+        <button class="lb-next" id="lb-next" aria-label="Next"><i class="fa fa-chevron-right"></i></button>
+        <div class="lb-media-wrap">
+            <img id="lb-img" src="" alt="" />
+            <video id="lb-video" controls loop></video>
+        </div>
+        <div class="lb-counter" id="lb-counter"></div>
+    </div>
+
+    <footer>
+        <p>© 2025 Jackson Yuen &nbsp;·&nbsp; <a href="https://subotix.etsy.com" target="_blank">Subotix LLC</a> &nbsp;·&nbsp; <a href="../privacy-policy.html">Privacy Policy</a></p>
+    </footer>
+    <script src="gallery-page.js"></script>
+    <script>loadGallery();</script>
+</body>
+</html>
