@@ -140,7 +140,8 @@ li.nav-divider {
 }
 
 #home.has-banner .hero h1,
-#home.has-banner .hero .tagline {
+#home.has-banner .hero .tagline,
+#home.has-banner .hero .hero-intro {
     color: #fff;
     text-shadow: 0 2px 16px rgba(0,0,0,0.6);
 }
@@ -198,6 +199,15 @@ li.nav-divider {
     font-weight: 300;
     font-style: italic;
     margin-bottom: 1.5rem;
+}
+
+.hero .hero-intro {
+    max-width: 40rem;
+    margin: 0 auto 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--text-secondary);
 }
 
 .hero-badges {
