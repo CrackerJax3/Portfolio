@@ -101,6 +101,33 @@
 
   gtag('config', 'G-6BF68Q3PCD');
 </script>
+<!-- IP-based location enrichment -> GA4 custom dimensions (user-scoped) -->
+<script>
+(function () {
+  var KEY = 'geo_enrich_v1', TTL = 864e5; // 24h
+  function send(d) {
+    var p = {
+      geo_city: d.city, geo_region: d.region, geo_postal: d.postal,
+      geo_country: d.country_name || d.country, geo_isp: d.org || d.isp,
+      geo_asn: d.asn
+    };
+    try { gtag('set', 'user_properties', p); } catch (e) {}
+    try { gtag('event', 'geo_enrichment', p); } catch (e) {}
+  }
+  try {
+    var c = JSON.parse(localStorage.getItem(KEY) || 'null');
+    if (c && Date.now() - c.t < TTL) { send(c.d); return; }
+  } catch (e) {}
+  fetch('https://ipapi.co/json/')
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      if (!d || d.error) return;
+      try { localStorage.setItem(KEY, JSON.stringify({ t: Date.now(), d: d })); } catch (e) {}
+      send(d);
+    })
+    .catch(function () {});
+})();
+</script>
 
 <body>
 	
